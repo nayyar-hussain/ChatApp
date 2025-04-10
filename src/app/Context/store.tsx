@@ -1,6 +1,6 @@
 "use client";
 import { useAuth, useUser } from "@clerk/nextjs";
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext} from "react";
 
 // Define interfaces for your data structures
 

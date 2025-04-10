@@ -2,7 +2,7 @@
 import { useClerk, UserButton } from "@clerk/nextjs";
 import { useAppContext } from "../Context/store";
 
-export default  function () {
+ function UserNavigation() {
 
     const {user} = useAppContext()
     const {openSignIn} = useClerk()
@@ -27,3 +27,5 @@ export default  function () {
         </div>
     )
 }
+
+export default UserNavigation

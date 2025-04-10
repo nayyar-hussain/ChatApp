@@ -2,7 +2,7 @@ import ChatboxChatBox from "./ChatboxChatBox";
 import ChatBoxFriednsSecsion from "./ChatBoxFriednsSecsion";
 import Navbar from "./Navbar";
 
-export default async function () {
+ function ChatBox () {
     return(
         <div>
             <Navbar/>
@@ -13,3 +13,5 @@ export default async function () {
         </div>
     )
 }
+
+export default ChatBox

@@ -1,7 +1,8 @@
 import ChatBox from "./components/ChatBox";
 
-export default async function (){
+ function page(){
   return (
     <ChatBox/>
   )
 }
+export default page;
