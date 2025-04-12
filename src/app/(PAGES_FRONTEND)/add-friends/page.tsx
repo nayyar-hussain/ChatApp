@@ -92,9 +92,9 @@ const AddFriend: React.FC = () => {
             users.map((user) => (
               <AddFriendCard
                 key={user._id}
-                _id={user._id}
+               
                 name={user.name}
-                email={user.email}
+               
                 imageUrl={user.ImageUrl}
                 bio={user.bio}
                 createdAt={user.createdAt}

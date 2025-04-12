@@ -2,15 +2,14 @@ import Image from 'next/image';
 import React from 'react';
 
 interface IAddFriendCardProps {
-  _id: string;
+ 
   name: string;
-  email: string;
   imageUrl: string;
   bio?: string;
   createdAt: string;
 }
 
-function AddFriendCard({ _id, name, email, imageUrl, bio, createdAt }: IAddFriendCardProps) {
+function AddFriendCard({ name, imageUrl, bio, createdAt }: IAddFriendCardProps) {
   // Format createdAt date
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
