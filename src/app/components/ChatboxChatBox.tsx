@@ -28,7 +28,7 @@ function ChatboxChatBox() {
       >
         <div
           className={`p-3 px-5 rounded-tr-none rounded-full max-w-[70%] mb-10 ${
-            message.sender === 'me' ? 'bg-blue-500 text-white' : 'bg-white'
+            message.sender === 'me' ? 'bg-blue-500 text-white' : 'bg-gray-200'
           }`}
         >
           <p>{message.text}</p>
