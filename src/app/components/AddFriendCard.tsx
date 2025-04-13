@@ -18,8 +18,7 @@ function AddFriendCard({ name, imageUrl, bio, createdAt }: IAddFriendCardProps) 
   });
 
   return (
-    <div className="my-10">
-      <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 max-w-md mx-auto">
+      <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300  mx-auto w-full">
         <div className="relative mx-auto w-[120px] h-[120px] my-4">
           {imageUrl ? (
             <Image
@@ -38,11 +37,10 @@ function AddFriendCard({ name, imageUrl, bio, createdAt }: IAddFriendCardProps) 
         <h1 className="mb-2 text-xl font-bold text-gray-800">{name}</h1>
         <p className="text-gray-500 text-sm mb-2 line-clamp-2">{bio || 'No bio available'}</p>
         <p className="text-gray-400 text-xs mb-4">Joined: {formattedDate}</p>
-        <button className="bg-blue-500 text-white rounded-lg py-2 px-4 w-full font-medium hover:bg-blue-600 transition-colors duration-200">
+        <button className= "cursor-pointer bg-blue-500 text-white rounded-lg py-2 px-4 w-full font-medium hover:bg-blue-600 transition-colors duration-200">
           Add Friend
         </button>
       </div>
-    </div>
   );
 }
 

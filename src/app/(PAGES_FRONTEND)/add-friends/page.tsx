@@ -29,6 +29,8 @@ const AddFriend: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  
+
   // Fetch users on component mount
   useEffect(() => {
     const fetchUsers = async () => {
@@ -85,7 +87,7 @@ const AddFriend: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {users.length === 0 ? (
             <p>No users found</p>
           ) : (
