@@ -3,6 +3,7 @@
 import AddFriendCard from '@/app/components/AddFriendCard';
 import Container from '@/app/components/Container';
 import Icons from '@/app/components/Icons';
+import { useAppContext } from '@/app/Context/store';
 import axios from 'axios';
 import { SendHorizontal } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
@@ -25,11 +26,26 @@ interface ApiResponse {
 }
 
 const AddFriend: React.FC = () => {
+  const {userId} = useAppContext()
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  
+  const handleAddFriendRequest = async (rid : string) => {
+    try {
+
+      
+      
+      
+      if(!rid) {
+        setError("reciver id block try again")
+      }
+      const {data} = await axios.post('/api/user', {rid , userId})
+      
+    } catch (error) {
+      
+    }
+  }
 
   // Fetch users on component mount
   useEffect(() => {
@@ -93,8 +109,9 @@ const AddFriend: React.FC = () => {
           ) : (
             users.map((user) => (
               <AddFriendCard
+              handleAddFriendRequest={handleAddFriendRequest}
                 key={user._id}
-               
+               _id={user._id}
                 name={user.name}
                
                 imageUrl={user.ImageUrl}
