@@ -7,18 +7,17 @@ export interface IUser extends Document {
     bio?: string;
     createdAt: Date;
 }
-
 const UserSchema: Schema = new Schema(
-    {
-        name: { type: String, required: true,  },
-        email: { type: String, required: true, unique: true },
-        ImageUrl: { type: String, required: true },
-        bio: { type: String, default: '' },
-        createdAt: { type: Date, default: Date.now },
-    },
-    {
-        timestamps: true,
-    }
+  {
+    clerkUserId: { type: String, required: true, unique: true },  // Clerk ID ke liye alag field
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    ImageUrl: { type: String, required: true },
+    bio: { type: String, default: '' }
+  },
+  {
+    timestamps: true,  // createdAt aur updatedAt auto manage honge
+  }
 );
 
 const User = models.User || model<IUser>('User', UserSchema);
