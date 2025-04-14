@@ -41,7 +41,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   interface IApiResponse {
     msg : string,
     status : number,
-    FriendRequests : IFR
+    friendRequests : IFR
   }
 
   const handleFetchFriendRequest = async () => {

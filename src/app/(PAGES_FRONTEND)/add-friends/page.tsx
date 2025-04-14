@@ -11,7 +11,6 @@ import React, { useState, useEffect } from 'react';
 // Define the User interface for individual users
 interface User {
   _id: string;
-  clerkUserId: string
   name: string;
   email: string;
   ImageUrl: string; // Changed to camelCase for consistency
@@ -113,7 +112,7 @@ const AddFriend: React.FC = () => {
               <AddFriendCard
                 handleAddFriendRequest={handleAddFriendRequest}
                 key={user._id}
-                clerkUserId={user.clerkUserId}
+                _id={user._id}
                 name={user.name}
 
                 imageUrl={user.ImageUrl}
