@@ -11,7 +11,7 @@ import React, { useState, useEffect } from 'react';
 // Define the User interface for individual users
 interface User {
   _id: string;
-  clerkUserId : string
+  clerkUserId: string
   name: string;
   email: string;
   ImageUrl: string; // Changed to camelCase for consistency
@@ -27,27 +27,25 @@ interface ApiResponse {
 }
 
 const AddFriend: React.FC = () => {
-  const {userId} = useAppContext()
+  const { userId } = useAppContext()
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const handleAddFriendRequest = async (rid : string) => {
+  const handleAddFriendRequest = async (rid: string) => {
     try {
-
-      
-      
-      
-      if(!rid) {
+      if (!rid) {
         setError("reciver id block try again")
       }
-      const {data} = await axios.post('/api/user', {rid , userId})
+      const { data } = await axios.post('/api/user', { rid, userId })
       console.log(data);
-      
-      
+
+
     } catch (error) {
+      console.log(error);
+
       setError("ERror found while ");
-      
+
     }
   }
 
@@ -113,11 +111,11 @@ const AddFriend: React.FC = () => {
           ) : (
             users.map((user) => (
               <AddFriendCard
-              handleAddFriendRequest={handleAddFriendRequest}
+                handleAddFriendRequest={handleAddFriendRequest}
                 key={user._id}
                 clerkUserId={user.clerkUserId}
                 name={user.name}
-               
+
                 imageUrl={user.ImageUrl}
                 bio={user.bio}
                 createdAt={user.createdAt}
