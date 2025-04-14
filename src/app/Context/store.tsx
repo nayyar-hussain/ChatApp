@@ -1,6 +1,7 @@
 "use client";
 import { useAuth, useUser } from "@clerk/nextjs";
-import { createContext, ReactNode, useContext} from "react";
+import axios from "axios";
+import { createContext, ReactNode, useContext, useEffect} from "react";
 
 // Define interfaces for your data structures
 
@@ -25,6 +26,40 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const { userId, isLoaded } = useAuth();
  
     
+  // function for fetch friend request
+
+  interface IFR {
+    receiverId : string,
+    status : string,
+    senderId : {
+      imageUrl : string,
+      bio : string,
+      name : string
+    }
+  }
+
+  interface IApiResponse {
+    msg : string,
+    status : number,
+    FriendRequests : IFR
+  }
+
+  const handleFetchFriendRequest = async () => {
+  
+    try {
+      const {data} = await axios.get<IApiResponse>(`/api/Friend-Request?userId=${userId}`)
+      console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+  useEffect(() => {
+   if(userId){
+    handleFetchFriendRequest()
+   }
+  }, [userId])
   
   const value: AppContextValue = {
     user,

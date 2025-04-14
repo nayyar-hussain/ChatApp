@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 // Define the User interface for individual users
 interface User {
   _id: string;
+  clerkUserId : string
   name: string;
   email: string;
   ImageUrl: string; // Changed to camelCase for consistency
@@ -41,8 +42,11 @@ const AddFriend: React.FC = () => {
         setError("reciver id block try again")
       }
       const {data} = await axios.post('/api/user', {rid , userId})
+      console.log(data);
+      
       
     } catch (error) {
+      setError("ERror found while ");
       
     }
   }
@@ -111,7 +115,7 @@ const AddFriend: React.FC = () => {
               <AddFriendCard
               handleAddFriendRequest={handleAddFriendRequest}
                 key={user._id}
-               _id={user._id}
+                clerkUserId={user.clerkUserId}
                 name={user.name}
                
                 imageUrl={user.ImageUrl}

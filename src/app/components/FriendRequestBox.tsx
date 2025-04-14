@@ -3,7 +3,7 @@ import React from 'react'
 
 function FriendRequestBox() {
   return (
-    <div className="absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-10">
+    <div className="mr-5  absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-10">
     {/* Header */}
     <div className="flex justify-between items-center p-4 border-b border-gray-200">
       <h3 className="font-semibold text-gray-800">Friend Requests</h3>
@@ -38,10 +38,10 @@ function FriendRequestBox() {
             </div>
           </div>
           <div className="flex space-x-2">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded">
+            <button className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded">
               Accept
             </button>
-            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-medium px-3 py-1 rounded">
+            <button className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs font-medium px-3 py-1 rounded">
               Reject
             </button>
           </div>
@@ -49,15 +49,7 @@ function FriendRequestBox() {
    
     </div>
 
-    {/* Footer */}
-    <div className="p-3 text-center border-t border-gray-200">
-      <a
-        href="#"
-        className="text-blue-500 hover:text-blue-600 text-sm font-medium"
-      >
-        View all requests
-      </a>
-    </div>
+  
   </div>
   )
 }

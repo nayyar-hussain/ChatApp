@@ -9,7 +9,6 @@ export interface IUser extends Document {
 }
 const UserSchema: Schema = new Schema(
   {
-    clerkUserId: { type: String, required: true, unique: true },  // Clerk ID ke liye alag field
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     ImageUrl: { type: String, required: true },

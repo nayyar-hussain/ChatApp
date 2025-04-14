@@ -1,4 +1,5 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import { model, models, Schema } from "mongoose";
+
 
 export interface IFriendRequest extends Document {
     senderId: string;
@@ -10,7 +11,7 @@ export interface IFriendRequest extends Document {
 
 const FriendRequestSchema: Schema = new Schema(
     {
-        senderId: { type: String, required: true },
+        senderId: { type: String, ref : 'User' },
         receiverId: { type: String, required: true },
         status: { 
             type: String, 
@@ -21,6 +22,6 @@ const FriendRequestSchema: Schema = new Schema(
     { timestamps: true }
 );
 
-const FriendRequest = mongoose.model<IFriendRequest>('FriendRequest', FriendRequestSchema);
+const FriendRequest = models.FriendRequest || model<IFriendRequest>('FriendRequest', FriendRequestSchema);
 
 export default FriendRequest

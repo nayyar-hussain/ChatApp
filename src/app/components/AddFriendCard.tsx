@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 interface IAddFriendCardProps {
- _id : string
+  clerkUserId : string
   name: string;
   imageUrl: string;
   bio?: string;
@@ -10,7 +10,7 @@ interface IAddFriendCardProps {
   handleAddFriendRequest : (_id : string)  => {}
 }
 
-function AddFriendCard({ _id, name, imageUrl, bio, createdAt , handleAddFriendRequest}: IAddFriendCardProps) {
+function AddFriendCard({ clerkUserId, name, imageUrl, bio, createdAt , handleAddFriendRequest}: IAddFriendCardProps) {
   // Format createdAt date
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -38,7 +38,7 @@ function AddFriendCard({ _id, name, imageUrl, bio, createdAt , handleAddFriendRe
         <h1 className="mb-2 text-xl font-bold text-gray-800">{name}</h1>
         <p className="text-gray-500 text-sm mb-2 line-clamp-2">{bio || 'No bio available'}</p>
         <p className="text-gray-400 text-xs mb-4">Joined: {formattedDate}</p>
-        <button onClick={() => handleAddFriendRequest(_id)}  className= "cursor-pointer bg-blue-500 text-white rounded-lg py-2 px-4 w-full font-medium hover:bg-blue-600 transition-colors duration-200">
+        <button onClick={() => handleAddFriendRequest(clerkUserId)}  className= "cursor-pointer bg-blue-500 text-white rounded-lg py-2 px-4 w-full font-medium hover:bg-blue-600 transition-colors duration-200">
           Add Friend
         </button>
       </div>

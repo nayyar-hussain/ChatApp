@@ -17,7 +17,7 @@ export const syncUserCreation = inngest.createFunction(
       const { id, first_name, last_name, email_addresses, image_url } = event.data;
 
       const userData = {
-        clerkUserId: id,  // Clerk ID ko alag field mein store karo
+        _id: id,  // Clerk ID ko alag field mein store karo
         name: `${first_name} ${last_name}`,
         email: email_addresses[0].email_address,
         ImageUrl: image_url,
@@ -39,7 +39,7 @@ export const syncUserUpdation = inngest.createFunction(
   async ({ event }) => {
     const { id, first_name, last_name, email_addresses, image_url } = event.data;
     const userData = {
-      clerkUserId: id,  // Clerk ID ko alag field mein store karo
+      _id: id,  // Clerk ID ko alag field mein store karo
       name: `${first_name} ${last_name}`,
       email: email_addresses[0].email_address,
       ImageUrl: image_url,
@@ -47,7 +47,7 @@ export const syncUserUpdation = inngest.createFunction(
 
     await ConnectToDatabase();
     await User.findOneAndUpdate(
-      { clerkUserId: id },  // Clerk ID se search karo
+      { _id: id },  
       userData,
       { new: true }
     );  }

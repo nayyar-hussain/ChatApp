@@ -23,6 +23,7 @@ export async function GET( )  {
 export async function POST(req: NextRequest) {
     try {
         const { userId , rid} = await req.json()
+        
         ConnectToDatabase()
         const findSenAndRec = await FriendRequest.find({senderId : userId , receiverId : rid })
         if(!findSenAndRec){
