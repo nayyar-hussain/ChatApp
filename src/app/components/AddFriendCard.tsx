@@ -7,7 +7,7 @@ interface IAddFriendCardProps {
   imageUrl: string;
   bio?: string;
   createdAt: string;
-  handleAddFriendRequest : (_id : string)  => Promise<any>
+  handleAddFriendRequest : (_id : string)  => Promise<void>
 }
 
 function AddFriendCard({ clerkUserId, name, imageUrl, bio, createdAt , handleAddFriendRequest}: IAddFriendCardProps) {
