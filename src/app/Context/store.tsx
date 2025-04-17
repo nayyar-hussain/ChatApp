@@ -35,6 +35,10 @@ interface AppContextValue {
  FRequest : IFR[]
  Friend : IFriend[]
  handleFetchFriendRequest : () => Promise<void>
+ setReceiverId: (id: string) => void;  
+ receiverId : string
+
+ 
 }
 
 
@@ -55,6 +59,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   const [FRequest, setFRequest] = useState<IFR[]>([])
   const [Friend, setFriend] = useState<IFriend[]>([])
+  const [receiverId, setReceiverId] = useState('')
+
 
 
   interface IApiResponse {
@@ -116,7 +122,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     isLoaded,
     FRequest,
     handleFetchFriendRequest,
-    Friend
+    Friend,
+    receiverId , setReceiverId
     
   };
 

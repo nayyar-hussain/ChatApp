@@ -1,6 +1,9 @@
+"use client"
 import { SendHorizontal } from 'lucide-react';
-import React from 'react'
+import React, { useState } from 'react'
 import Icons from './Icons';
+import { useAppContext } from '../Context/store';
+import axios from 'axios';
 
 const messages = [
     { sender: 'me', text: 'Hello! Kaise ho Rizwan kaha gum aj kal?', time: '10:00 AM' },
@@ -13,10 +16,28 @@ const messages = [
     { sender: 'other', text: 'Apna khayal rakh help chai ho to bata dena koi upar ki field me dal den ge', time: '10:06 AM' },
     { sender: 'me', text: 'sach batao to chaprasi ki nokri lagi he laga de koi upar ki field me', time: '10:06 AM' },
 ];
-
 function ChatboxChatBox() {
+ 
+  
+ 
+
+  const [content, setContent] = useState('')
+const {userId , receiverId} = useAppContext()
+
+const handleSendMessage = async () => {
+ try {
+  const {data} = await axios.post('/api/message', {content , userId ,receiverId})
+  console.log(data);
+  
+ } catch (error) {
+  console.log(error);
+  
+ }
+  
+  }
     return (
         <div className="flex-1 bg-slate-200">
+          <h1> User id : {receiverId}</h1>
 <div className="flex flex-col h-screen bg-gray-100 p-4">
   {/* Messages Container (Top) */}
   <div className="flex-1 overflow-y-auto  flex flex-col">
@@ -41,12 +62,17 @@ function ChatboxChatBox() {
   {/* Search Bar (Bottom) */}
   <div className="mt-4 flex rounded-full overflow-hidden">
     <input
+    value={content}
+    onChange={(e) => setContent(e.target.value)}
       type="text"
       placeholder="Type a message..."
       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
     <div className='w-[80px] h-full bg-[#298acd] text-white flex justify-center items-center'>
+      <div onClick={handleSendMessage}>
+
         <Icons Icon={SendHorizontal}/>
+      </div>
        
     </div>
   </div>

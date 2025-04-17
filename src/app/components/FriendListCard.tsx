@@ -1,17 +1,21 @@
 import Image from 'next/image'
 import React from 'react'
+import { useAppContext } from '../Context/store'
 
 
 interface IFriendProps {
   name : string,
   bio : string,
   ImageUrl : string
-}
-function FriendListCard({name , bio , ImageUrl} : IFriendProps) {
+  _id : string
 
+}
+function FriendListCard({ _id ,name , bio , ImageUrl } : IFriendProps) {
+
+  const { setReceiverId } = useAppContext()
  
   return (
-    <div className='w-full bg-[#329ce3] p-3 rounded flex  gap-3 text-white my-5 cursor-pointer'>
+    <div onClick={() => setReceiverId(_id)} className='w-full bg-[#329ce3] p-3 rounded flex  gap-3 text-white my-5 cursor-pointer'>
         <div className=' rounded-full w-[40px] h-[40px] overflow-hidden'>
           <Image
           src={ImageUrl}
