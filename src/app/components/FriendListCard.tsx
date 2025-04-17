@@ -22,8 +22,8 @@ function FriendListCard({name , bio , ImageUrl} : IFriendProps) {
         </div>
         <div>
 
-        <h1>Friend Name</h1>
-        <h3>I am Devel...</h3>
+        <h1>{name}</h1>
+        <h3>{bio ? bio.slice(0 , 14) : 'No bio here'}</h3>
         </div>
     </div>
   )

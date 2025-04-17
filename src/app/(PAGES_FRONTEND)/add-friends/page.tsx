@@ -41,7 +41,8 @@ const AddFriend: React.FC = () => {
 
 
     } catch (error) {
-
+      console.log(error);
+      
       setError("ERror found while ");
 
     }
