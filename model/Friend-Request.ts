@@ -11,7 +11,7 @@ export interface IFriendRequest extends Document {
 
 const FriendRequestSchema: Schema = new Schema(
     {
-        senderId: { type: Schema.ObjectId, ref : 'User' },
+        senderId: { type: String , required : true },
         receiverId: { type: String, required: true },
         status: { 
             type: String, 

@@ -41,7 +41,6 @@ const AddFriend: React.FC = () => {
 
 
     } catch (error) {
-      console.log(error);
 
       setError("ERror found while ");
 
@@ -56,6 +55,7 @@ const AddFriend: React.FC = () => {
         const { data } = response;
         if (data.status === 200 && Array.isArray(data.users)) {
           setUsers(data.users);
+          
         } else {
           setError(data.msg || 'Failed to fetch users');
         }

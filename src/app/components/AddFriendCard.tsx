@@ -11,6 +11,7 @@ interface IAddFriendCardProps {
 }
 
 function AddFriendCard({ _id, name, imageUrl, bio, createdAt , handleAddFriendRequest}: IAddFriendCardProps) {
+  
   // Format createdAt date
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
     year: 'numeric',

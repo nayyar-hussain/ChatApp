@@ -28,7 +28,7 @@ function ChatboxChatBox() {
       >
         <div
           className={`p-3 px-5 rounded-tr-none rounded-full max-w-[70%] mb-10 ${
-            message.sender === 'me' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+            message.sender === 'me' ? 'bg-[#298acd] text-white' : 'bg-gray-200'
           }`}
         >
           <p>{message.text}</p>
@@ -45,7 +45,7 @@ function ChatboxChatBox() {
       placeholder="Type a message..."
       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
-    <div className='w-[80px] h-full bg-blue-500 text-white flex justify-center items-center'>
+    <div className='w-[80px] h-full bg-[#298acd] text-white flex justify-center items-center'>
         <Icons Icon={SendHorizontal}/>
        
     </div>
