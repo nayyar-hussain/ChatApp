@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 
 export default function Navbar() {
-    const { FRequest , userId, handleFetchFriendRequest} = useAppContext();
+    const { FRequest , userId, handleFetchFriendRequest } = useAppContext();
     const [friendListPopup, setfriendListPopup] = useState(false)
 
     const handleFriend = async (friendId : string) => {

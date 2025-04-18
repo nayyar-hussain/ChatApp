@@ -6,6 +6,7 @@ import Icons from '@/app/components/Icons';
 import { useAppContext } from '@/app/Context/store';
 import axios from 'axios';
 import { SendHorizontal } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
 // Define the User interface for individual users
@@ -30,6 +31,8 @@ const AddFriend: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter()
+
 
   const handleAddFriendRequest = async (rid: string) => {
     try {
@@ -89,8 +92,9 @@ const AddFriend: React.FC = () => {
     );
   }
 
+
   return (
-    <div>
+    <div className='py-10'>
       <Container>
         <h1 className="text-2xl font-semibold my-10">ADD FRIENDS</h1>
 
@@ -124,6 +128,10 @@ const AddFriend: React.FC = () => {
           )}
         </div>
       </Container>
+      <div className='w-full  text-center'>
+
+      <button onClick={() => router.push('/')} className='cursor-pointer bg-blue-500 font-semibold text-white rounded p-2'>Go To Chat Box</button>
+      </div>
     </div>
   );
 };

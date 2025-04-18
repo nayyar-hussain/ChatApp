@@ -1,5 +1,5 @@
 "use client";
-import { SendHorizontal, RefreshCw } from "lucide-react"; // Added RefreshCw for refresh button
+import { SendHorizontal, RefreshCw, AlignLeft } from "lucide-react"; // Added RefreshCw for refresh button
 import React, { useEffect, useState, useRef } from "react";
 import Icons from "./Icons";
 import { useAppContext } from "../Context/store";
@@ -31,7 +31,7 @@ interface IApiResponseMessages {
 }
 
 const ChatboxChatBox = () => {
-  const { userId, receiverId , userName} = useAppContext();
+  const { userId, receiverId, userName , setburger , burger } = useAppContext();
   const [content, setContent] = useState("");
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -111,7 +111,7 @@ const ChatboxChatBox = () => {
   }, [messages]);
 
   return (
-    <div className="flex-1 bg-slate-200">
+    <div className={`flex-1 bg-slate-200 ${burger ? "w-0 p-0" : ''}`}>
       <div className="flex justify-between items-center p-4">
         <h1 className="text-lg font-semibold">
           Chat with {userName || "select User"}
@@ -125,6 +125,10 @@ const ChatboxChatBox = () => {
         </button>
       </div>
       <div className="flex flex-col h-screen bg-gray-100 p-4">
+        <div onClick={() => setburger(!burger)} className="mb-10 md:hidden">
+
+          <AlignLeft />
+        </div>
         {/* Messages Container */}
         <div className="flex-1 overflow-y-auto flex flex-col">
           {isLoading && <div className="text-center">Loading messages...</div>}
@@ -138,16 +142,14 @@ const ChatboxChatBox = () => {
             .map((message) => (
               <div
                 key={message._id}
-                className={`flex ${
-                  message.senderId === userId ? "justify-end" : "justify-start"
-                } mb-4`}
+                className={`flex ${message.senderId === userId ? "justify-end" : "justify-start"
+                  } mb-4`}
               >
                 <div
-                  className={`p-3 px-5 rounded-tr-none rounded-full max-w-[70%] ${
-                    message.senderId === userId
+                  className={`p-3 px-5 rounded-tr-none rounded-full max-w-[70%] ${message.senderId === userId
                       ? "bg-[#298acd] text-white"
                       : "bg-gray-200"
-                  }`}
+                    }`}
                 >
                   <p>{message.content}</p>
                   <small className="text-xs">
@@ -169,7 +171,7 @@ const ChatboxChatBox = () => {
             className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
           />
-          <div  onClick={handleSendMessage} className="w-[80px] h-full bg-[#298acd] text-white flex justify-center items-center">
+          <div onClick={handleSendMessage} className="w-[80px] h-full bg-[#298acd] text-white flex justify-center items-center">
             <div className="cursor-pointer">
               <Icons Icon={SendHorizontal} />
             </div>

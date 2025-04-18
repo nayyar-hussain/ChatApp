@@ -39,7 +39,8 @@ interface AppContextValue {
  receiverId : string
  userName : string
  setuserName : (name : string) => void
- 
+ setburger : (val : boolean) => void
+ burger : boolean
 }
 
 
@@ -62,6 +63,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [Friend, setFriend] = useState<IFriend[]>([])
   const [receiverId, setReceiverId] = useState('')
   const [userName, setuserName] = useState('')
+  const [burger, setburger] = useState(false)
 
 
 
@@ -125,8 +127,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     handleFetchFriendRequest,
     Friend,
     receiverId , setReceiverId,
-    userName , setuserName
-    
+    userName , setuserName,
+    burger , setburger
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

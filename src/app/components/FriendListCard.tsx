@@ -12,15 +12,16 @@ interface IFriendProps {
 }
 function FriendListCard({ friendId ,name , bio , ImageUrl } : IFriendProps) {
 
-  const { setReceiverId ,setuserName} = useAppContext()
+  const { setReceiverId ,setuserName , setburger} = useAppContext()
 
   const handleUserNameAndReciverId = () => {
     setReceiverId(friendId)
     setuserName(name)
+    setburger(false)
   }
  
   return (
-    <div onClick={() => handleUserNameAndReciverId()} className='w-full bg-[#329ce3] p-3 rounded flex  gap-3 text-white my-5 cursor-pointer'>
+    <div onClick={() => handleUserNameAndReciverId() } className='w-full bg-[#329ce3] p-3 rounded flex  gap-3 text-white my-5 cursor-pointer'>
         <div className=' rounded-full w-[40px] h-[40px] overflow-hidden'>
           <Image
           src={ImageUrl}
