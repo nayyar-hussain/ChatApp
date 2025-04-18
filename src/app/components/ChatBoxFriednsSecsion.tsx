@@ -1,7 +1,7 @@
 "use client"
-import React, { useState } from 'react'
+import React from 'react'
 import FriendListCard from './FriendListCard'
-import {  LogOutIcon, UserPlus } from 'lucide-react'
+import {   UserPlus } from 'lucide-react'
 import Icons from './Icons'
 import { useRouter } from 'next/navigation'
 import { useAppContext } from '../Context/store'
