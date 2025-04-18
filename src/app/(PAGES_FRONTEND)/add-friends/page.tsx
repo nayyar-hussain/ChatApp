@@ -55,7 +55,7 @@ const AddFriend: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get<ApiResponse>('http://localhost:3000/api/user');
+        const response = await axios.get<ApiResponse>('/api/user');
         const { data } = response;
         if (data.status === 200 && Array.isArray(data.users)) {
           setUsers(data.users);
