@@ -168,7 +168,7 @@ const ChatboxChatBox = () => {
             onChange={(e) => setContent(e.target.value)}
             type="text"
             placeholder="Type a message..."
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500"
             onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
           />
           <div onClick={handleSendMessage} className="w-[80px] h-full bg-[#298acd] text-white flex justify-center items-center">

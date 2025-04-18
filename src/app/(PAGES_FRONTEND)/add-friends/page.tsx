@@ -130,7 +130,7 @@ const AddFriend: React.FC = () => {
       </Container>
       <div className='w-full  text-center'>
 
-      <button onClick={() => router.push('/')} className='cursor-pointer bg-blue-500 font-semibold text-white rounded p-2'>Go To Chat Box</button>
+      <button onClick={() => router.push('/')} className='cursor-pointer bg-blue-500 font-semibold text-white rounded p-2 my-10'>Go To Chat Box</button>
       </div>
     </div>
   );
