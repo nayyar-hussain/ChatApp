@@ -6,23 +6,37 @@ import FriendRequest from "../../../../model/Friend-Request";
 
 export async function POST(req: NextRequest) {
     try {
-        const { userId , friendId} = await req.json()
-        ConnectToDatabase()
-        const isFriends = await friendModel.find({userId , friendId})
-        if(isFriends.length > 0){
-            return NextResponse.json({status : 400 , msg : "already friend"})
+        const { userId, friendId } = await req.json();
+        await ConnectToDatabase();
+
+        // Check if they are already friends
+        const isFriends = await friendModel.findOne({
+            $or: [
+                { userId, friendId },
+                { userId: friendId, friendId: userId },
+            ],
+        });
+
+        if (isFriends) {
+            return NextResponse.json({ status: 400, msg: "Already friends" });
         }
 
-        await friendModel.create({
-            userId,
-            friendId
-        })
-        await FriendRequest.findOneAndDelete({senderId : friendId})
-        return NextResponse.json({status : 200 })
+        // Create mutual friend entries
+        await friendModel.create([
+            { userId, friendId }, // person1 -> person2
+            { userId: friendId, friendId: userId }, // person2 -> person1
+        ]);
 
+        // Delete the friend request
+        await FriendRequest.findOneAndDelete({
+            senderId: friendId,
+            receiverId: userId,
+        });
+
+        return NextResponse.json({ status: 200, msg: "Friend added successfully" });
     } catch (error) {
-        return NextResponse.json({status : 400 , error})
-
+        console.error("Error:", error);
+        return NextResponse.json({ status: 400, error: error });
     }
 }
 
@@ -31,32 +45,32 @@ export async function GET(req: NextRequest) {
         await ConnectToDatabase();
 
         const { searchParams } = new URL(req.url);
-        const userId = searchParams.get('userId');
-
+        const userId = searchParams.get("userId");
 
         if (!userId) {
             return NextResponse.json({ status: 400, msg: "User ID is required" });
         }
 
-        // Incoming friend requests fetch karo (jahan userId receiver ho)
-        const friendRequests = await friendModel.find({  userId });
+        // Fetch all friends where the userId is present
+        const friendRecords = await friendModel.find({ userId });
 
-        // Har request ke liye sender ka data fetch karo
-        const Friends = await Promise.all(
-            friendRequests.map(async (request) => {
-                const sender = await User.findOne({ _id: request.friendId }).select("name bio ImageUrl");
-
+        // Fetch friend details for each friend record
+        const friends = await Promise.all(
+            friendRecords.map(async (record) => {
+                const friend = await User.findOne({ _id: record.friendId }).select(
+                    "name bio ImageUrl"
+                );
                 return {
-                    ...request.toObject(),
-                    friend: sender ? sender.toObject() : null, // Sender ka data add karo
+                    ...record.toObject(),
+                    friend: friend ? friend.toObject() : null,
                 };
             })
         );
 
         return NextResponse.json({
             status: 200,
-            msg: "Friend  fetched successfully",
-            Friends
+            msg: "Friends fetched successfully",
+            friends,
         });
     } catch (error) {
         console.error("Error:", error);

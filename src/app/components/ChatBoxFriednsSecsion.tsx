@@ -13,12 +13,12 @@ function ChatBoxFriednsSecsion() {
 
     
   return (
-    <div className="w-[350px] bg-[#298acd] tet-white h-screen px-5">
+    <div className="w-[350px] bg-[#298acd] tet-white  px-5">
         <div className='my-5 '>
             {
             Friend.map((frd) => (
 
-                <FriendListCard key={frd._id} _id={frd._id} name={frd.friend.name} bio={frd.friend.bio} ImageUrl={frd.friend.ImageUrl}/>
+                <FriendListCard key={frd._id} friendId={frd.friendId} name={frd.friend.name} bio={frd.friend.bio} ImageUrl={frd.friend.ImageUrl}/>
             ))
             }
         </div>

@@ -37,7 +37,8 @@ interface AppContextValue {
  handleFetchFriendRequest : () => Promise<void>
  setReceiverId: (id: string) => void;  
  receiverId : string
-
+ userName : string
+ setuserName : (name : string) => void
  
 }
 
@@ -60,6 +61,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [FRequest, setFRequest] = useState<IFR[]>([])
   const [Friend, setFriend] = useState<IFriend[]>([])
   const [receiverId, setReceiverId] = useState('')
+  const [userName, setuserName] = useState('')
 
 
 
@@ -94,7 +96,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   interface IApiResponseFriend {
     msg : string,
     status : number,
-    Friends : IFriend[]
+    friends : IFriend[]
   }
 
   const handleFetchFriends = async () => {
@@ -102,8 +104,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   
     try {
       const {data} = await axios.get<IApiResponseFriend>(`/api/Friends?userId=${userId}`)
-      setFriend(data.Friends);
-      console.log(data);
+      setFriend(data.friends);
       
     } catch (error) {
       console.log(error);
@@ -123,7 +124,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     FRequest,
     handleFetchFriendRequest,
     Friend,
-    receiverId , setReceiverId
+    receiverId , setReceiverId,
+    userName , setuserName
     
   };
 

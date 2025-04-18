@@ -6,7 +6,7 @@ interface IconsProps {
 
 const Icons: React.FC<IconsProps> = ({ Icon }) => {
   return (
-    <div className='text-white'>
+    <div className='text-white cursor-pointer'>
       <Icon />
     </div>
   );
