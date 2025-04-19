@@ -84,11 +84,11 @@ const AddFriend: React.FC = () => {
       }
       const { data } = await axios.post('/api/user', { rid, userId });
       
-      if (data.status == 200) {
+      if (data.status === 200) {
         toast.success( 'Request sent');
         
       } else {
-        toast.error("you are already friends")
+        toast.success( 'You already send');
       }
     } catch (error) {
       console.error(error);
@@ -107,7 +107,14 @@ const AddFriend: React.FC = () => {
   }
 
   // Render error state
-  
+  if (error) {
+    return (
+      <Container>
+        <h1 className="text-2xl font-semibold my-10">ADD FRIENDS</h1>
+        <div>Error: {error}</div>
+      </Container>
+    );
+  }
 
   return (
     <div className="py-10">
