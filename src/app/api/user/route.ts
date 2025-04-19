@@ -25,8 +25,9 @@ export async function POST(req: NextRequest) {
         const { userId , rid} = await req.json()
         
         ConnectToDatabase()
-        const findSenAndRec = await FriendRequest.find({senderId : userId , receiverId : rid })
-        if(!findSenAndRec){
+        const findSenAndRec = await FriendRequest.findOne({senderId : userId , receiverId : rid })
+        
+        if(findSenAndRec){
             return NextResponse.json({status :400 , msg : "You are already friends"})
         }
         await FriendRequest.create({
