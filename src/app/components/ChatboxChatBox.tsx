@@ -88,7 +88,6 @@ const ChatboxChatBox = () => {
       });
       console.log("Send message response:", data);
       setContent(""); // Clear input
-      toast.success(data.msg || "Message sent successfully");
       await handleFetchMessages(); // Refresh messages
     } catch (error) {
       console.error("Error sending message:", error);
