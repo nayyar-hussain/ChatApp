@@ -42,7 +42,8 @@ const AddFriend: React.FC = () => {
       try {
         const response = await axios.get<ApiResponse>('/api/user');
         const { data } = response;
-        if (data.status === 200 && Array.isArray(data.users)) {
+        
+        if (data.status === 200 ) {
           setUsers(data.users);
           setfilterUser(data.users); // Initialize filterUser with all users
         } else {

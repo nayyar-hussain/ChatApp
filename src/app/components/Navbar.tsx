@@ -15,7 +15,6 @@ export default function Navbar() {
     const handleFriend = async (friendId : string) => {
       try {
         const {data} = await axios.post('/api/Friends', { friendId , userId})
-        console.log(data);
         if(data.status === 200) {
             toast.success('Friend Request Accepted')
             handleFetchFriendRequest()

@@ -145,7 +145,7 @@ const ChatboxChatBox = () => {
                   } mb-4`}
               >
                 <div
-                  className={`p-3 px-5 rounded-tr-none rounded-full max-w-[70%] ${message.senderId === userId
+                  className={`py-1 px-5 rounded-tr-none rounded-full max-w-[70%] ${message.senderId === userId
                       ? "bg-[#298acd] text-white"
                       : "bg-gray-200"
                     }`}

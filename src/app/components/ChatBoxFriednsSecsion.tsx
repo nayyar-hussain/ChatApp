@@ -15,7 +15,7 @@ function ChatBoxFriednsSecsion() {
   return (
     <>
     <div className={` overflow-hidden md:w-[350px] bg-[#298acd] tet-white md:p-5 ${burger ?" w-full p-5" : "w-0 p-0"}`}>
-        <div className='my-5 '>
+        <div className='flex flex-col gap-5 '>
             {
             Friend.map((frd) => (
 
@@ -23,8 +23,11 @@ function ChatBoxFriednsSecsion() {
             ))
             }
         </div>
-        <div onClick={() => router.push('/add-friends')} className='flex text-white gap-1.5 items-center cursor-pointer'>
-            <Icons Icon={UserPlus }/> <h3 className='text-sm py-5 '>Add Friends</h3>
+        <div onClick={() => router.push('/add-friends')} className=' py-5 flex text-white gap-1.5 items-center cursor-pointer'>
+            <Icons Icon={UserPlus }/> <h3 className='text-sm  '>Add Friends</h3>
+        </div>
+        <div  className=' text-white '>
+             <p className='text-[12px]  opacity-90'>&copy; Copyright By Nayyar Hussain</p>
         </div>
        
     </div>
