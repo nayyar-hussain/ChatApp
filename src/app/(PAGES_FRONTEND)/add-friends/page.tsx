@@ -40,11 +40,11 @@ const AddFriend: React.FC = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get<ApiResponse>('/api/user');
-        const { data } = response;
+        const {data} = await axios.get<ApiResponse>('/api/user');
+      
         
         if (data.status === 200 ) {
-          setUsers(data.users);
+           setUsers(data.users);
           setfilterUser(data.users); // Initialize filterUser with all users
         } 
       } catch (err) {
