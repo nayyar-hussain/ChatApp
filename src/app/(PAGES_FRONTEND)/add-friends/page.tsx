@@ -46,9 +46,7 @@ const AddFriend: React.FC = () => {
         if (data.status === 200 ) {
           setUsers(data.users);
           setfilterUser(data.users); // Initialize filterUser with all users
-        } else {
-          setError(data.msg || 'Failed to fetch users');
-        }
+        } 
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred while fetching users');
       } finally {
